@@ -16,7 +16,7 @@ export default function ProductsPage() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/products", {
+      const res = await axios.get("https://agrisoil.onrender.com/api/products", {
         params: {
           category: category !== "All" ? category : undefined,
           minPrice: 0,

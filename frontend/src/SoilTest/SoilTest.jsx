@@ -29,7 +29,7 @@ export default function SoilTest() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:8080/api/soil-reports",
+        "https://agrisoil.onrender.com/api/soil-reports",
         form,
         { headers: { Authorization: `Bearer ${token}` } }
       );

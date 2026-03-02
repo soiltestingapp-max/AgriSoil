@@ -21,8 +21,8 @@ export default function Auth({ type }) {
 
     const url =
       type === "login"
-        ? "http://localhost:8080/api/auth/login"
-        : "http://localhost:8080/api/auth/register";
+        ? "https://agrisoil.onrender.com/api/auth/login"
+        : "https://agrisoil.onrender.com/api/auth/register";
 
     const res = await fetch(url, {
       method: "POST",

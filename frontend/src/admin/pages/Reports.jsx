@@ -8,7 +8,7 @@ export default function Reports() {
   useEffect(() => {
     const fetchReports = async () => {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:8080/api/soil-reports", {
+      const res = await axios.get("https://agrisoil.onrender.com/api/soil-reports", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setReports(res.data);
@@ -23,7 +23,7 @@ export default function Reports() {
     const token = localStorage.getItem("token");
 
     await axios.put(
-      `http://localhost:8080/api/soil-reports/${id}/approve`,
+      `https://agrisoil.onrender.com/api/soil-reports/${id}/approve`,
       {},
       { headers: { Authorization: `Bearer ${token}` } },
     );
