@@ -1,0 +1,141 @@
+.admin-users {
+  background: #f4f7fa;
+}
+
+.users-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.users-header h3 {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.total-users {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* TABLE */
+.custom-table thead {
+  background: #1e293b;
+  color: white;
+}
+
+.custom-table thead th {
+  padding: 14px;
+  font-weight: 600;
+}
+
+.custom-table tbody tr {
+  transition: 0.2s ease;
+}
+
+.custom-table tbody tr:hover {
+  background: #f8fafc;
+  transform: scale(1.01);
+}
+
+.custom-table td {
+  padding: 16px;
+  vertical-align: middle;
+}
+
+/* ROLE BADGES */
+.role-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.role-badge.admin {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.role-badge.farmer {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.role-badge.user {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+/* REPORT COUNT */
+.report-count {
+  background: #e0f2fe;
+  color: #0284c7;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* ACTIONS */
+.action-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.role-select {
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  padding: 4px 8px;
+  font-size: 13px;
+}
+
+.role-select:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+}
+
+.delete-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .users-card {
+    padding: 20px;
+  }
+
+  .users-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .action-group {
+    flex-direction: column;
+  }
+}

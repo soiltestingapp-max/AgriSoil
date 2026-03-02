@@ -1,0 +1,104 @@
+.analysis-wrapper {
+  background: #f8f9fa;
+}
+
+/* Summary */
+.green-line {
+  width: 4px;
+  height: 22px;
+  background: #28a745;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.info-box {
+  background: #f1f3f5;
+  padding: 16px 20px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 140px;
+}
+
+.info-box small {
+  color: #6c757d;
+}
+
+.info-box h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Nutrient Cards */
+.nutrient-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.nutrient-card h6 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #6c757d;
+}
+
+.circle {
+  --value: 50;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background: conic-gradient(currentColor calc(var(--value) * 1%), #e9ecef 0);
+  color: #28a745;
+  font-size: 18px;
+}
+.circle.low {
+  color: #dc3545;
+}
+
+.circle.optimal {
+  color: #28a745;
+}
+
+.circle.high {
+  color: #ffc107;
+}
+
+/* Expert Section */
+.expert-section {
+  background: linear-gradient(135deg, #1c2e1f, #243b28);
+}
+
+.recommendation-item {
+  display: flex;
+  gap: 15px;
+  align-items: start;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.recommendation-item h6 {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.recommendation-item p {
+  color: #cfcfcf;
+}
+
+.number {
+  background: #28a745;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}

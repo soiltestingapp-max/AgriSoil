@@ -1,0 +1,98 @@
+.hero-section {
+  min-height: 80vh;
+}
+
+.hero-badge {
+  background: #e6f4ea;
+  color: #1dbf38;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-size: 54px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.hero-title span {
+  color: #1dbf38;
+}
+
+.hero-text {
+  font-size: 16px;
+  color: #6b7280;
+  max-width: 500px;
+}
+
+.hero-btn-primary {
+  padding: 12px 26px;
+  border-radius: 12px;
+  font-weight: 600;
+  background-color: #1dbf38;
+  border: none;
+}
+
+.hero-btn-primary:hover {
+  background-color: #18a92f;
+}
+
+.hero-btn-secondary {
+  padding: 12px 26px;
+  border-radius: 12px;
+}
+
+.hero-img {
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.soil-card {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: #ffffff;
+  padding: 15px 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.soil-card small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.soil-card h5 {
+  color: #1dbf38;
+  font-weight: 700;
+}
+
+.avatars img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-left: -10px;
+  border: 2px solid #fff;
+}
+
+.trusted span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .soil-card {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,112 @@
+/* Wrapper */
+.admin-reports {
+  background: #f4f7fa;
+}
+
+/* Card Container */
+.reports-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Header */
+.reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.reports-header h3 {
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Total Badge */
+.report-count-badge {
+  background: #e2fbe8;
+  color: #15803d;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Table Styling */
+.custom-report-table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.custom-report-table thead th {
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.custom-report-table tbody tr {
+  background: #f9fafb;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.custom-report-table tbody tr:hover {
+  background: #eef2f7;
+}
+
+.custom-report-table tbody td {
+  border: none;
+  vertical-align: middle;
+  padding: 15px;
+}
+
+/* Status Badge */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-badge.approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* Approve Button */
+.approve-btn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.approve-btn:hover {
+  background: #15803d;
+  transform: translateY(-2px);
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+  .reports-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .report-count-badge {
+    align-self: flex-start;
+  }
+}

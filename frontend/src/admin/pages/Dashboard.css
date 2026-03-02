@@ -1,0 +1,43 @@
+.admin-dashboard {
+  background: #f4f7fa;
+}
+
+.dashboard-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-card h6 {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.dashboard-card h3 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Color Themes */
+.dashboard-card.users {
+  border-left: 6px solid #0284c7;
+}
+
+.dashboard-card.reports {
+  border-left: 6px solid #16a34a;
+}
+
+.dashboard-card.pending {
+  border-left: 6px solid #f59e0b;
+}
+
+.dashboard-card.orders {
+  border-left: 6px solid #6366f1;
+}

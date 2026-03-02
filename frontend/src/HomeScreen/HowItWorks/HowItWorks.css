@@ -1,0 +1,58 @@
+
+.section-title {
+  font-weight: 700;
+  font-size: 32px;
+  color: #111827;
+}
+
+.section-subtitle {
+  color: #6b7280;
+  max-width: 600px;
+  margin: 10px auto 0;
+  font-size: 15px;
+}
+
+.how-card {
+  background: #ffffff;
+  padding: 35px 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+  height: 100%;
+}
+
+.how-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background: #e6f4ea;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: #1dbf38;
+  font-size: 22px;
+}
+
+.how-card h5 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.how-card p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 26px;
+  }
+}
