@@ -11,7 +11,7 @@ export default function Orders() {
   }, []);
 
   const fetchOrders = async () => {
-    const res = await axios.get("https://agrisoil.onrender.com/api/orders", {
+    const res = await axios.get("http://localhost:8080/api/orders", {
       headers: { Authorization: `Bearer ${token}` },
     });
     setOrders(res.data);
@@ -19,7 +19,7 @@ export default function Orders() {
 
   const updateStatus = async (id, status) => {
     await axios.put(
-      `https://agrisoil.onrender.com/api/orders/${id}`,
+      `http://localhost:8080/api/orders/${id}`,
       { orderStatus: status },
       { headers: { Authorization: `Bearer ${token}` } },
     );
@@ -87,16 +87,39 @@ export default function Orders() {
 
                   {/* UPDATE */}
                   <td>
-                    <select
-                      className="status-select"
-                      value={order.orderStatus}
-                      onChange={(e) => updateStatus(order._id, e.target.value)}
-                    >
-                      <option>Pending</option>
-                      <option>Processing</option>
-                      <option>Shipped</option>
-                      <option>Delivered</option>
-                    </select>
+                    {order.orderStatus === 'Delivered' || order.orderStatus === 'Cancelled' ? (
+                      <span className="text-muted fw-bold ms-2">{order.orderStatus}</span>
+                    ) : (
+                      <select
+                        className="status-select form-select form-select-sm"
+                        value={order.orderStatus}
+                        onChange={(e) => updateStatus(order._id, e.target.value)}
+                      >
+                        {order.orderStatus === 'Pending' && (
+                          <>
+                            <option value="Pending">Pending</option>
+                            <option value="Processing">Processing</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                          </>
+                        )}
+                        {order.orderStatus === 'Processing' && (
+                          <>
+                            <option value="Processing">Processing</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                          </>
+                        )}
+                        {order.orderStatus === 'Shipped' && (
+                          <>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                          </>
+                        )}
+                      </select>
+                    )}
                   </td>
                 </tr>
               ))}

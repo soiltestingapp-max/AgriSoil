@@ -1,5 +1,6 @@
 import axios from "axios";
 import SoilReport from "../models/SoilReport.js";
+import { createWorker } from "tesseract.js";
 
 /* ============================= */
 /* USER: Create Soil Report */
@@ -9,7 +10,8 @@ export const createSoilReport = async (req, res) => {
     const { N, P, K, temperature, humidity, ph, rainfall } = req.body;
 
     // 🔥 Call Python AI Service
-    const aiResponse = await axios.post("http://127.0.0.1:8000/predict", {
+    const aiBaseUrl = process.env.AI_BASE_URL || "http://127.0.0.1:8000";
+    const aiResponse = await axios.post(`${aiBaseUrl}/predict`, {
       N,
       P,
       K,
@@ -37,6 +39,60 @@ export const createSoilReport = async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: "Failed to generate soil report" });
+  }
+};
+
+function extractFirstNumberNearLabel(text, labels) {
+  if (!text) return null;
+  const normalized = text.replace(/\s+/g, " ").toLowerCase();
+  const labelGroup = labels.map((l) => l.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+
+  // Matches like: "Nitrogen (N): 90", "N 90", "N=90", "pH 6.5"
+  const re = new RegExp(
+    `(?:\\b(?:${labelGroup})\\b)[^0-9]{0,10}(-?\\d+(?:\\.\\d+)?)`,
+    "i",
+  );
+  const m = normalized.match(re);
+  if (!m) return null;
+  const n = Number(m[1]);
+  return Number.isFinite(n) ? n : null;
+}
+
+export const extractSoilDataFromImage = async (req, res) => {
+  try {
+    if (!req.file?.buffer) {
+      return res.status(400).json({ message: "image file is required" });
+    }
+
+    const worker = await createWorker("eng");
+    const {
+      data: { text },
+    } = await worker.recognize(req.file.buffer);
+    await worker.terminate();
+
+    const N = extractFirstNumberNearLabel(text, ["nitrogen", "n"]);
+    const P = extractFirstNumberNearLabel(text, ["phosphorus", "p"]);
+    const K = extractFirstNumberNearLabel(text, ["potassium", "k"]);
+    const ph = extractFirstNumberNearLabel(text, ["ph"]);
+    const temperature = extractFirstNumberNearLabel(text, ["temperature", "temp", "°c", "c"]);
+    const humidity = extractFirstNumberNearLabel(text, ["humidity", "rh", "%"]);
+    const rainfall = extractFirstNumberNearLabel(text, ["rainfall", "rain", "mm"]);
+
+    res.json({
+      extracted: {
+        N,
+        P,
+        K,
+        temperature,
+        humidity,
+        ph,
+        rainfall,
+      },
+      rawText: (text || "").slice(0, 4000),
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to extract soil data from image" });
   }
 };
 

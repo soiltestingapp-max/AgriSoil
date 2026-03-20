@@ -1,9 +1,22 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Navbar.css"
+import "./Navbar.css";
+import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const { cartItems } = useCart();
   const user = JSON.parse(localStorage.getItem("user"));
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery)}`);
+    } else {
+      navigate(`/products`);
+    }
+  };
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -49,26 +62,41 @@ export default function Navbar() {
                 Marketplace
               </span>
             </li>
-            <li className="nav-item">
-              <span className="nav-link" style={{ cursor: "pointer" }}>
-                How It Works
-              </span>
-            </li>
-            <li className="nav-item">
-              <span className="nav-link" style={{ cursor: "pointer" }}>
-                About Us
-              </span>
-            </li>
           </ul>
 
           {/* Search Bar */}
-          <form className="d-flex me-3" style={{ width: "250px" }}>
+          <form className="d-flex me-3" style={{ width: "250px" }} onSubmit={handleSearch}>
             <input
-              className="form-control rounded-pill"
+              className="form-control rounded-pill px-3"
               type="search"
               placeholder="Search kits, fertilizers..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </form>
+
+          {/* Wishlist Icon */}
+          <div 
+            className="position-relative me-4 mt-2 mt-lg-0" 
+            style={{ cursor: "pointer" }} 
+            onClick={() => navigate("/wishlist")}
+          >
+            <i className="fas fa-heart fs-5 text-danger"></i>
+          </div>
+
+          {/* Cart Icon */}
+          <div 
+            className="position-relative me-4 mt-2 mt-lg-0" 
+            style={{ cursor: "pointer" }} 
+            onClick={() => navigate("/cart")}
+          >
+            <i className="fas fa-shopping-cart fs-5 text-success"></i>
+            {cartItems.length > 0 && (
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: "0.65rem" }}>
+                {cartItems.length}
+              </span>
+            )}
+          </div>
 
           {/* Profile Dropdown */}
           {user ? (
@@ -84,11 +112,14 @@ export default function Navbar() {
 
               <ul className="dropdown-menu dropdown-menu-end shadow">
                 <li>
-                  <span className="dropdown-item text-muted">
-                    Role: {user.role}
-                  </span>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => navigate("/my-orders")}
+                  >
+                    <i className="fas fa-box-open me-2 text-primary"></i>
+                    My Orders
+                  </button>
                 </li>
-                <li><hr className="dropdown-divider" /></li>
                 <li>
                   <button
                     className="dropdown-item text-danger"

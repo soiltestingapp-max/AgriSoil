@@ -21,8 +21,8 @@ export default function AddProduct() {
   }, []);
 
   const fetchProducts = async () => {
-    const res = await axios.get("https://agrisoil.onrender.com/api/products");
-    setProducts(res.data);
+    const res = await axios.get("http://localhost:8080/api/products");
+    setProducts(res.data.products || []);
   };
 
   const handleChange = (e) => {
@@ -33,7 +33,7 @@ export default function AddProduct() {
     e.preventDefault();
 
     try {
-      await axios.post("https://agrisoil.onrender.com/api/products", form, {
+      await axios.post("http://localhost:8080/api/products", form, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -60,7 +60,7 @@ export default function AddProduct() {
     if (!window.confirm("Delete this product?")) return;
 
     await axios.delete(
-      `https://agrisoil.onrender.com/api/products/${id}`,
+      `http://localhost:8080/api/products/${id}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 

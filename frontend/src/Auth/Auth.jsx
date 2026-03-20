@@ -21,8 +21,8 @@ export default function Auth({ type }) {
 
     const url =
       type === "login"
-        ? "https://agrisoil.onrender.com/api/auth/login"
-        : "https://agrisoil.onrender.com/api/auth/register";
+        ? "http://localhost:8080/api/auth/login"
+        : "http://localhost:8080/api/auth/register";
 
     const res = await fetch(url, {
       method: "POST",
@@ -45,6 +45,7 @@ export default function Auth({ type }) {
       localStorage.setItem(
         "user",
         JSON.stringify({
+          id: payload.id,
           email: form.email,
           role: userRole,
         })
