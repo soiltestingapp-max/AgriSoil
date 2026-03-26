@@ -10,7 +10,7 @@ export const createSoilReport = async (req, res) => {
     const { N, P, K, temperature, humidity, ph, rainfall } = req.body;
 
     // 🔥 Call Python AI Service
-    const aiBaseUrl = process.env.AI_BASE_URL || "http://127.0.0.1:8000";
+    const aiBaseUrl = process.env.AI_BASE_URL || "https://agrisoil-ai.onrender.com";
     const aiResponse = await axios.post(`${aiBaseUrl}/predict`, {
       N,
       P,
