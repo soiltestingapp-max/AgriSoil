@@ -30,7 +30,7 @@ export default function Analysis() {
         setRecError("");
         const token = localStorage.getItem("token");
 
-        const res = await axios.get("http://localhost:8080/api/products/recommended", {
+        const res = await axios.get("https://agrisoil.onrender.com/api/products/recommended", {
           params: { reportId: state?._id, limit: 6 },
           headers: { Authorization: `Bearer ${token}` },
         });

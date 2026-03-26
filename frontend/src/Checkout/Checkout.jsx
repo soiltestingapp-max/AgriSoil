@@ -32,7 +32,7 @@ export default function Checkout() {
         totalAmount: getCartTotal(),
       };
 
-      await axios.post("http://localhost:8080/api/orders", orderData, {
+      await axios.post("https://agrisoil.onrender.com/api/orders", orderData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

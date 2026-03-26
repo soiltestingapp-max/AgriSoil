@@ -11,7 +11,7 @@ export default function Orders() {
   }, []);
 
   const fetchOrders = async () => {
-    const res = await axios.get("http://localhost:8080/api/orders", {
+    const res = await axios.get("https://agrisoil.onrender.com/api/orders", {
       headers: { Authorization: `Bearer ${token}` },
     });
     setOrders(res.data);
@@ -19,7 +19,7 @@ export default function Orders() {
 
   const updateStatus = async (id, status) => {
     await axios.put(
-      `http://localhost:8080/api/orders/${id}`,
+      `https://agrisoil.onrender.com/api/orders/${id}`,
       { orderStatus: status },
       { headers: { Authorization: `Bearer ${token}` } },
     );

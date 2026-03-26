@@ -18,7 +18,7 @@ export default function Dashboard() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get("http://localhost:8080/api/admin/stats", {
+      const res = await axios.get("https://agrisoil.onrender.com/api/admin/stats", {
         headers: { Authorization: `Bearer ${token}` },
       });
 

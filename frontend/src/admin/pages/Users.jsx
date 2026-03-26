@@ -14,7 +14,7 @@ export default function Users() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/users", {
+      const res = await axios.get("https://agrisoil.onrender.com/api/users", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -29,7 +29,7 @@ export default function Users() {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
     try {
-      await axios.delete(`http://localhost:8080/api/users/${id}`, {
+      await axios.delete(`https://agrisoil.onrender.com/api/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
